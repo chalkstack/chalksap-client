@@ -1,0 +1,9 @@
+*~
+*.pyc
+*.h5
+*.csv
+*.db
+old
+nwrfcsdk
+*dev_rfc.trc
+*__pycache__
