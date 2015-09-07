@@ -1,5 +1,3 @@
-
-
 import json, requests, pandas as pd
 
 def build_request_full_table(table, cred):
@@ -18,7 +16,8 @@ def build_request_full_table(table, cred):
             'headers': headers,
             'data':js}
 
-def build_request_table(table, cred, fields=None, where=''):
+def build_request_table(table, cred, fields=None, where='',
+                        server_url='http://172.17.42.1', server_port='5100'):
     js = json.dumps(
         {'host': cred['ashost'],
          'client': cred['client'],
@@ -31,7 +30,7 @@ def build_request_table(table, cred, fields=None, where=''):
     )
     headers = {'Content-Type': 'application/json'}
     auth = (cred['user'], cred['passwd'])
-    return {'url': 'http://127.0.0.1:5000/chalksap/read_small_table',
+    return {'url': '%s:%s/chalksap/read_small_table' % (server_url,server_port),
             'auth': auth,
             'headers': headers,
             'data':js}
